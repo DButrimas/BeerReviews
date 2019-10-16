@@ -8321,11 +8321,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dalius\\Desktop\\BeerReviews\\BeerReviews_Server\\BeerReviews_Server.csproj",
+      "projectUniqueName": "C:\\Users\\Dalius\\Desktop\\BeerReviews-master\\BeerReviews_Server\\BeerReviews_Server.csproj",
       "projectName": "BeerReviews_Server",
-      "projectPath": "C:\\Users\\Dalius\\Desktop\\BeerReviews\\BeerReviews_Server\\BeerReviews_Server.csproj",
+      "projectPath": "C:\\Users\\Dalius\\Desktop\\BeerReviews-master\\BeerReviews_Server\\BeerReviews_Server.csproj",
       "packagesPath": "C:\\Users\\Dalius\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dalius\\Desktop\\BeerReviews\\BeerReviews_Server\\obj\\",
+      "outputPath": "C:\\Users\\Dalius\\Desktop\\BeerReviews-master\\BeerReviews_Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

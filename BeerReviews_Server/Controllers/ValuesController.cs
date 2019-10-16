@@ -12,6 +12,12 @@ namespace BeerReviews_Server.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+
+        public IActionResult test()
+        {
+            return Ok($"You are not loged in pidor, please login pidor");
+        }
+
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Route("getlogin")]
         public IActionResult GetLogin()

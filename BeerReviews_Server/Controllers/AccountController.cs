@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BeerReviews_Server.Models;
 using BeerReviews_Server.ViewModels;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,23 +16,29 @@ using Newtonsoft.Json;
 
 namespace BeerReviews_Server.Controllers
 {
+    //[Route("api/[controller]")]
     public class AccountController : Controller
     {
 
-        private UserContext db;
-        public AccountController(UserContext context)
+        private BeerReviews_ServerContext db;
+        public AccountController(BeerReviews_ServerContext context)
         {
             db = context;
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginModel model)
+        
+
+        [HttpPost("/login")]
+        //[HttpPost]
+       // [ValidateAntiForgeryToken]
+        //[Route("api/login")]
+        public async Task<IActionResult> Login(LoginModel model)//UserModel model
         {
+           // User user = new User { Email = "a@gmail.com", Password = "123", Role = "Admin" };
             if (ModelState.IsValid)
             {
-               User user =  new User { Email = "a@gmail.com", Password = "123", Role = "Admin" },
-                //  User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == u.Password);
-                
+              //  User user = new User { Email = "a@gmail.com", Password = "123", Role = "Admin" };
+                  User user = await db.User.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == u.Password);
+
                 if (user != null)
                 {
                     await Authenticate(user);
@@ -42,37 +49,45 @@ namespace BeerReviews_Server.Controllers
                 Response.StatusCode = 400;
                 await Response.WriteAsync("Invalid username or password.");
             }
-            return StatusCode(404,"Koki suda tu man nx siunti ?!");
+            return StatusCode(404, "Koki suda tu man nx siunti ?!");
 
         }
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User _user = await db.User.FirstOrDefaultAsync(u => u.Email == model.Email);
+                if(_user == null)
+                {
+                    User user = new User { Email = model.Email, Password = model.Passwrod, Role = "User" };
+                    db.User.Add(user);
+                    await Authenticate(user);
+                }
+                else
+                {
+                    ModelState.AddModelError("","Incorect Email or password");
+                }
+            }
+            return StatusCode(404, "Koki suda tu man nx siunti ?!");
+        }
 
-        private List<User> userList = new List<User>
-        { 
-            new User {Email = "a@gmail.com",Password = "123",Role = "Admin" },
-            new User {Email = "b@gmail.com",Password = "123",Role = "User" }
-        };
 
         public async Task Authenticate(User user)
         {
-            var header = Request.Headers["Authorization"];
-            var credValue = header.ToString().Substring("Basic ".Length).Trim();
-            var usernameAndPassEncr = Encoding.UTF8.GetString(Convert.FromBase64String(credValue));
-            var usernameAndPasswd = usernameAndPassEncr.Split(":");
-            var username = usernameAndPasswd[0];
-            var password = usernameAndPasswd[1];
 
             var Claims = new List<Claim>
                 {
                     new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
                     new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role),
-                  
+
                 };
-                ClaimsIdentity claimsIdentity =
-                new ClaimsIdentity(Claims, "Token", ClaimsIdentity.DefaultNameClaimType,
-                    ClaimsIdentity.DefaultRoleClaimType);
+            ClaimsIdentity claimsIdentity =
+            new ClaimsIdentity(Claims, "Token", ClaimsIdentity.DefaultNameClaimType,
+                ClaimsIdentity.DefaultRoleClaimType);
 
             var now = DateTime.UtcNow;
-   
+
             var jwt = new JwtSecurityToken(
                     issuer: AuthOptions.ISSUER,
                     audience: AuthOptions.AUDIENCE,
@@ -86,12 +101,13 @@ namespace BeerReviews_Server.Controllers
             {
                 access_token = encodedJwt,
                 username = user.Email
-                
+
             };
             Response.StatusCode = 200;
             Response.ContentType = "application/json";
             await Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented }));
         }
 
-     
+
+    }
 }

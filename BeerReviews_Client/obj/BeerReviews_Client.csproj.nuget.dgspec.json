@@ -1,32 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dalius\\Desktop\\BeerReviews\\BeerReviews_Client\\BeerReviews_Client.csproj": {}
+    "C:\\Users\\Dalius\\Desktop\\BeerReviews-master\\BeerReviews_Client\\BeerReviews_Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dalius\\Desktop\\BeerReviews\\BeerReviews_Client\\BeerReviews_Client.csproj": {
+    "C:\\Users\\Dalius\\Desktop\\BeerReviews-master\\BeerReviews_Client\\BeerReviews_Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dalius\\Desktop\\BeerReviews\\BeerReviews_Client\\BeerReviews_Client.csproj",
+        "projectUniqueName": "C:\\Users\\Dalius\\Desktop\\BeerReviews-master\\BeerReviews_Client\\BeerReviews_Client.csproj",
         "projectName": "BeerReviews_Client",
-        "projectPath": "C:\\Users\\Dalius\\Desktop\\BeerReviews\\BeerReviews_Client\\BeerReviews_Client.csproj",
+        "projectPath": "C:\\Users\\Dalius\\Desktop\\BeerReviews-master\\BeerReviews_Client\\BeerReviews_Client.csproj",
         "packagesPath": "C:\\Users\\Dalius\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dalius\\Desktop\\BeerReviews\\BeerReviews_Client\\obj\\",
+        "outputPath": "C:\\Users\\Dalius\\Desktop\\BeerReviews-master\\BeerReviews_Client\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\Dalius\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
