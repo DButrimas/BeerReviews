@@ -49,13 +49,13 @@ namespace BeerReviews_Server
             };
         });
 
-            services.AddControllers();
+
 
             services.AddDbContext<BeerReviews_ServerContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BeerReviews_ServerContext")));
 
-          
 
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,13 +68,12 @@ namespace BeerReviews_Server
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseAuthentication();
 
-            
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
