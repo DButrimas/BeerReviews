@@ -69,7 +69,7 @@ namespace BeerReviews_Server.Controllers
                     ModelState.AddModelError("","Incorect Email or password");
                 }
             }
-            return StatusCode(404, "Koki suda tu man nx siunti ?!");
+            return StatusCode(404, "Error text");
         }
 
 
