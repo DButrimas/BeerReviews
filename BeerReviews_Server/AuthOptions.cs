@@ -12,7 +12,7 @@ namespace BeerReviews_Server
         public const string ISSUER = "BeerReviews";
         public static string KEY = "asd1231asd123213dasd1sdas";
         public const int LIFETIME = 60;
-        public const string AUDIENCE = "DUXAI"; // потребитель токена
+        public const string AUDIENCE = "ASD";
         public static SymmetricSecurityKey GetSymmetricSecurityKey()
         {
             return new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
