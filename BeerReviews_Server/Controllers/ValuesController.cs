@@ -15,7 +15,7 @@ namespace BeerReviews_Server.Controllers
 
         public IActionResult test()
         {
-            return Ok($"You are not loged in pidor, please login pidor");
+            return Ok($"You are not loged in, please login");
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -29,7 +29,7 @@ namespace BeerReviews_Server.Controllers
         [Route("getrole")]
         public IActionResult GetRole()
         {
-            return Ok("Ваша роль: администратор");
+            return Ok("Your role: Admin");
         }
     }
 }
